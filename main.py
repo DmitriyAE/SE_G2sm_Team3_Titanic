@@ -4,7 +4,7 @@ import streamlit as st
 from var7 import var7_main
 # from var9 import var9_main
 # from var12 import var12_main
-# from var16 import var16_main
+from var16 import var16_main
 
 st.image('titaniс.jpg')
 st.title('Анализ данных пассажиров парахода «Титаник»')
@@ -24,7 +24,7 @@ elif choice_task_option == 'Вариант №7':
 #     var9_main()
 # elif choice_task_option == 'Вариант №12':
 #     var12_main()
-# elif choice_task_option == 'Вариант №16':
-#     var16_main()
+elif choice_task_option == 'Вариант №16':
+    var16_main()
 else:
     st.error(f'"{choice_task_option}" не реализован, пожалуйста, выберите другой вариант из списка.')
