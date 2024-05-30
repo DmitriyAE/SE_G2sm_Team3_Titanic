@@ -2,7 +2,7 @@ import streamlit as st
 # from var2 import var2_main
 # from var3 import var3_main
 from var7 import var7_main
-# from var9 import var9_main
+from var9 import var9_main
 # from var12 import var12_main
 from var16 import var16_main
 
@@ -20,8 +20,8 @@ if choice_task_option == '':
 #     var3_main()
 elif choice_task_option == 'Вариант №7':
     var7_main()
-# elif choice_task_option == 'Вариант №9':
-#     var9_main()
+elif choice_task_option == 'Вариант №9':
+    var9_main()
 # elif choice_task_option == 'Вариант №12':
 #     var12_main()
 elif choice_task_option == 'Вариант №16':
