@@ -1,5 +1,5 @@
 
-from main import info_ticket
+from var9 import info_ticket
 
 def test_no_data_info_ticket():
     lines = [ '0,1,Pclass,3,4,Sex,6,7,8,9,Fare',
