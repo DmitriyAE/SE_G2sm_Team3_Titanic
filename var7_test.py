@@ -24,7 +24,8 @@ def test_calculate_average_age_with_family_size_2():
         '5,0,3,0,0,0,50,6',
         '6,0,3,0,0,0,60,7',
     ]
-    assert calculate_average_age(lines, consider_family_size=True, family_size=2) == (10.0, 0, 0)
+    assert calculate_average_age(
+        lines, consider_family_size=True, family_size=2) == (10.0, 0, 0)
 
 
 def test_calculate_average_age_with_family_size_4():
@@ -37,7 +38,8 @@ def test_calculate_average_age_with_family_size_4():
         '5,0,3,0,0,0,50,6',
         '6,0,3,0,0,0,60,7',
     ]
-    assert calculate_average_age(lines, consider_family_size=True, family_size=4) == (0, 30.0, 0)
+    assert calculate_average_age(
+        lines, consider_family_size=True, family_size=4) == (0, 30.0, 0)
 
 
 def test_calculate_average_age_with_family_size_7():
@@ -50,7 +52,8 @@ def test_calculate_average_age_with_family_size_7():
         '5,0,3,0,0,0,50,6',
         '6,0,3,0,0,0,60,7',
     ]
-    assert calculate_average_age(lines, consider_family_size=True, family_size=7) == (0, 0, 60.0)
+    assert calculate_average_age(
+        lines, consider_family_size=True, family_size=7) == (0, 0, 60.0)
 
 
 def test_calculate_average_age_with_invalid_data():
