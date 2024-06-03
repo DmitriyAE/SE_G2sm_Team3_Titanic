@@ -2,7 +2,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 
 
-def count_passengers(lines,Embarked='None'):
+def count_passengers(lines, Embarked='None'):
     a_1 = 0
     a_0 = 0
     for line in lines:
@@ -20,20 +20,24 @@ def var2_main():
 
     a_0, a_1 = count_passengers(lines)
 
-    st.subheader('Подсчитать число спасенных и погибших для указанного пункта посадки.')
+    st.subheader(
+        'Подсчитать число спасенных и погибших для указанного пункта посадки.'
+    )
 
-    selected_port = st.selectbox('Пункт посадки:', ['выбрать', 'Шербур', 'Квинстаун', 'Саутгемптон'])
+    selected_port = st.selectbox(
+        'Пункт посадки:', ['выбрать', 'Шербур', 'Квинстаун', 'Саутгемптон']
+    )
 
     if selected_port == 'Шербур':
-        a_0, a_1, = count_passengers(lines,'C')
+        a_0, a_1, = count_passengers(lines, 'C')
         values = [a_0, a_1]
         labels = ["", ""]
     elif selected_port == 'Квинстаун':
-        a_0, a_1, = count_passengers(lines,'Q')
+        a_0, a_1, = count_passengers(lines, 'Q')
         values = [a_0, a_1]
         labels = ["", ""]
     elif selected_port == 'Саутгемптон':
-        a_0, a_1, = count_passengers(lines,'S')
+        a_0, a_1, = count_passengers(lines, 'S')
         values = [a_0, a_1]
         labels = ["", ""]
     else:
@@ -41,7 +45,10 @@ def var2_main():
         labels = []
 
     if selected_port != 'выбрать':
-        st.write(f"Количество пассажиров, спасенных и погибших для порта {selected_port}:")
+        st.write(
+            f"Количество пассажиров, спасенных и погибших "
+            f"для порта {selected_port}:"
+        )
         st.table({
             "Пассажиры": ["Погибшие", "Спасенные"],
             "Количество": values
@@ -51,5 +58,8 @@ def var2_main():
         fig, ax = plt.subplots()
         ax.pie(values, labels=labels, autopct='%1.1f%%', startangle=90)
         ax.axis('equal')
-        ax.legend(['Погибшие', 'Спасенные'], loc='center left', title='Статистика по портам в %', bbox_to_anchor=(1, 0.5))
+        ax.legend(
+            ['Погибшие', 'Спасенные'], loc='center left',
+            title='Статистика по портам в %', bbox_to_anchor=(1, 0.5)
+        )
         st.pyplot(fig)
