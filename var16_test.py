@@ -41,4 +41,3 @@ def test_count_survivors_no_survivors_in_price_range():
         '6,1,3,0,female,0,0,0,0,9.5875,0,0'
     ]
     assert count_survivors(lines, (100, 200)) == [0, 0, 0]
-    
