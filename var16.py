@@ -49,3 +49,4 @@ def var16_main():
     ax.set_title('Количество выживших женщин по классам')
 
     st.pyplot(fig)
+    
