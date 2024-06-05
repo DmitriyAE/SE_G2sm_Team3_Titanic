@@ -2,6 +2,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import csv
 
+
 def count_survivors(lines, price):
     first_class_survived = 0
     second_class_survived = 0
@@ -27,8 +28,12 @@ def count_survivors(lines, price):
 
     return [first_class_survived, second_class_survived, third_class_survived]
 
+
 def var16_main():
-    st.subheader('Просмотр данных количества выживших женщин по каждому классу обслуживания, с диапазоном платы за проезд')
+    st.subheader(
+        'Просмотр данных количества выживших женщин '
+        'по каждому классу обслуживания, с диапазоном платы за проезд'
+    )
     price = st.slider('Диапазон платы за проезд в $ 600', 0, 600, (0, 600))
     classes = ['Первый класс', 'Второй класс', 'Третий класс']
 
