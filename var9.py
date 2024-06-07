@@ -4,31 +4,24 @@ import numpy as np
 
 
 def info_ticket(x_lines, sex='None'):
-    v = 0
-    s = 0
-    e = 0
+    ticket_cost = {'1': 0, '2': 0, '3': 0}
+
     for line in x_lines:
         data = line.strip().split(',')
         try:
-            float(data[10])
+            cost = float(data[10])
         except (ValueError, IndexError):
             continue
 
-        if not sex == 'None':
-            if data[2] == '1' and data[5] == sex:
-                v += float(data[10])
-            elif data[2] == '2' and data[5] == sex:
-                s += float(data[10])
-            elif data[2] == '3' and data[5] == sex:
-                e += float(data[10])
-        else:
-            if data[2] == '1':
-                v += float(data[10])
-            elif data[2] == '2':
-                s += float(data[10])
-            elif data[2] == '3':
-                e += float(data[10])
-    return v, s, e
+        ticket_class = data[2]
+        passenger_sex = data[5]
+
+        if sex != 'None' and passenger_sex == sex:
+            ticket_cost[ticket_class] += cost
+        elif sex == 'None':
+            ticket_cost[ticket_class] += cost
+
+    return ticket_cost['1'], ticket_cost['2'], ticket_cost['3']
 
 
 with open('data.csv') as file:
