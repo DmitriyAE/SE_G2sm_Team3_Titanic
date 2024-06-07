@@ -10,17 +10,9 @@ def passenger(lines, selected_value):
     for data in reader:
         sex = data[4]
         sur = data[1]
-        if selected_value == "Всего":
-            if sex == 'female':
-                info['женщин'] += 1
-            elif sex == 'male':
-                info['мужчин'] += 1
-        elif selected_value == "Выживших (1)" and sur == '1':
-            if sex == 'female':
-                info['женщин'] += 1
-            elif sex == 'male':
-                info['мужчин'] += 1
-        elif selected_value == "Погибших (0)" and sur == '0':
+        if selected_value == "Всего" or (selected_value == "Выживших (1)" and sur == '1') or (
+                (selected_value == "Погибших (0)" and sur == '0')
+        ):
             if sex == 'female':
                 info['женщин'] += 1
             elif sex == 'male':
