@@ -28,10 +28,11 @@ with open('data.csv') as file:
     lines = file.readlines()
 
 
-def graf(v, s, e):
+def graf(vip, standard, economy):
     x = ['VIP', 'Стандарт', 'Эконом']
-    arr_x = [v, s, e]
+    arr_x = [vip, standard, economy]
     x_axis = np.arange(len(x))
+    plt.figure(figsize=(10, 3))
     plt.bar(x_axis - 0.0, arr_x, 0.6)
     plt.xticks(x_axis, x)
     plt.xlabel("Билет")
@@ -42,30 +43,30 @@ def graf(v, s, e):
 
 
 def var9_main():
-    st.subheader("Найти суммарную стоимость билетов пассажиров указанного пола по каждому классу обслуживания.")
+    st.write("**Найти суммарную стоимость билетов пассажиров указанного пола по каждому классу обслуживания.**")
     choice = st.selectbox('Суммарная стоимость билетов по каждому классу',
                           ['Всех проданных билетов', 'Проданных для мужчин', 'Проданных для женщин'])
 
     if choice == 'Всех проданных билетов':
-        v, s, e = info_ticket(lines)
-        st.table({'Сумма полученная от продажи билетов': ['\"высшего(VIP)\" класса',
+        vip, standard, economy = info_ticket(lines)
+        st.dataframe({'Сумма полученная от продажи билетов': ['\"высшего(VIP)\" класса',
                                                           '\"среднего(стандартного)\" класса',
                                                           '\"низший(эконом)\" класса'],
-                  'Кол-во': [round(v, 2), round(s, 2), round(e, 2)]})
-        graf(v, s, e)
+                  'Кол-во': [round(vip, 2), round(standard, 2), round(economy, 2)]})
+        graf(vip, standard, economy)
 
     elif choice == 'Проданных для мужчин':
-        v, s, e = info_ticket(lines, 'male')
-        st.table({'Сумма полученная от продажи билетов': ['\"высшего(VIP)\" класса',
+        vip, standard, economy = info_ticket(lines, 'male')
+        st.dataframe({'Сумма полученная от продажи билетов': ['\"высшего(VIP)\" класса',
                                                           '\"среднего(стандартного)\" класса',
                                                           '\"низший(эконом)\" класса'],
-                  'Кол-во': [round(v, 2), round(s, 2), round(e, 2)]})
-        graf(v, s, e)
+                  'Кол-во': [round(vip, 2), round(standard, 2), round(economy, 2)]})
+        graf(vip, standard, economy)
 
     elif choice == 'Проданных для женщин':
-        v, s, e = info_ticket(lines, 'female')
-        st.table({'Сумма полученная от продажи билетов': ['\"высшего(VIP)\" класса',
+        vip, standard, economy = info_ticket(lines, 'female')
+        st.dataframe({'Сумма полученная от продажи билетов': ['\"высшего(VIP)\" класса',
                                                           '\"среднего(стандартного)\" класса',
                                                           '\"низший(эконом)\" класса'],
-                  'Кол-во': [round(v, 2), round(s, 2), round(e, 2)]})
-        graf(v, s, e)
+                  'Кол-во': [round(vip, 2), round(standard, 2), round(economy, 2)]})
+        graf(vip, standard, economy)
