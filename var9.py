@@ -50,23 +50,23 @@ def var9_main():
     if choice == 'Всех проданных билетов':
         vip, standard, economy = info_ticket(lines)
         st.dataframe({'Сумма полученная от продажи билетов': ['\"высшего(VIP)\" класса',
-                                                          '\"среднего(стандартного)\" класса',
-                                                          '\"низший(эконом)\" класса'],
-                  'Кол-во': [round(vip, 2), round(standard, 2), round(economy, 2)]})
+                                                              '\"среднего(стандартного)\" класса',
+                                                              '\"низший(эконом)\" класса'],
+                      'Кол-во': [round(vip, 2), round(standard, 2), round(economy, 2)]})
         graf(vip, standard, economy)
 
     elif choice == 'Проданных для мужчин':
         vip, standard, economy = info_ticket(lines, 'male')
         st.dataframe({'Сумма полученная от продажи билетов': ['\"высшего(VIP)\" класса',
-                                                          '\"среднего(стандартного)\" класса',
-                                                          '\"низший(эконом)\" класса'],
-                  'Кол-во': [round(vip, 2), round(standard, 2), round(economy, 2)]})
+                                                              '\"среднего(стандартного)\" класса',
+                                                              '\"низший(эконом)\" класса'],
+                      'Кол-во': [round(vip, 2), round(standard, 2), round(economy, 2)]})
         graf(vip, standard, economy)
 
     elif choice == 'Проданных для женщин':
         vip, standard, economy = info_ticket(lines, 'female')
         st.dataframe({'Сумма полученная от продажи билетов': ['\"высшего(VIP)\" класса',
-                                                          '\"среднего(стандартного)\" класса',
-                                                          '\"низший(эконом)\" класса'],
-                  'Кол-во': [round(vip, 2), round(standard, 2), round(economy, 2)]})
+                                                              '\"среднего(стандартного)\" класса',
+                                                              '\"низший(эконом)\" класса'],
+                      'Кол-во': [round(vip, 2), round(standard, 2), round(economy, 2)]})
         graf(vip, standard, economy)
