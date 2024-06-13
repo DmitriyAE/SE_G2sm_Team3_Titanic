@@ -14,11 +14,13 @@ def var2_main():
     with open('data.csv', 'r') as file:
         lines = file.readlines()
 
-    st.subheader('Подсчитать число спасенных и погибших '
-                 'для указанного пункта посадки.')
+    st.write('**Подсчитать число спасенных и погибших'
+             'для указанного пункта посадки.**')
 
-    selected_port = st.selectbox('Пункт посадки:', ['выбрать', 'Шербур',
-                                 'Квинстаун', 'Саутгемптон'])
+    selected_port = st.selectbox(
+        'Пункт посадки:',
+        ['выбрать', 'Шербур', 'Квинстаун', 'Саутгемптон']
+    )
 
     if selected_port != 'выбрать':
         port_codes = {'Шербур': 'C', 'Квинстаун': 'Q', 'Саутгемптон': 'S'}
@@ -28,7 +30,7 @@ def var2_main():
 
         st.write(f"Количество пассажиров, спасенных "
                  f"и погибших для порта {selected_port}:")
-        st.table({'Пассажиры': labels, 'Количество': values})
+        st.dataframe({'Пассажиры': labels, 'Количество': values})
 
         fig, ax = plt.subplots()
         ax.pie(values, autopct='%1.1f%%', startangle=90)
