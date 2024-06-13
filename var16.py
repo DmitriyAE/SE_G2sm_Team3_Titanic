@@ -30,9 +30,9 @@ def count_survivors(lines, price):
 
 
 def var16_main():
-    st.subheader(
-        'Просмотр данных количества выживших женщин '
-        'по каждому классу обслуживания, с диапазоном платы за проезд'
+    st.write(
+        '**Просмотр данных количества выживших женщин '
+        'по каждому классу обслуживания, с диапазоном платы за проезд.**'
     )
     price = st.slider('Диапазон платы за проезд в $ 600', 0, 600, (0, 600))
     classes = ['Первый класс', 'Второй класс', 'Третий класс']
@@ -42,10 +42,15 @@ def var16_main():
 
     survivors = count_survivors(lines, price)
 
-    fig, ax = plt.subplots(figsize=(8, 6))
-    ax.bar(classes, survivors)
-    ax.set_xlabel('Класс')
-    ax.set_ylabel('Количество выживших женщин')
-    ax.set_title('Количество выживших женщин по классам')
+    table_data = {
+        'Класс обслуживания': classes,
+        'Количество выживших женщин': survivors
+    }
+    st.dataframe(table_data)
 
-    st.pyplot(fig)
+    plt.subplots(figsize=(10, 3))
+    plt.bar(classes, survivors)
+    plt.ylabel('Количество выживших женщин')
+    plt.title('Количество выживших женщин по классам')
+
+    st.pyplot(plt)
