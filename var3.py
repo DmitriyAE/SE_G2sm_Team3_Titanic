@@ -23,16 +23,13 @@ def passenger(lines, selected_value):
 def convert_to_percentages(info):
     total_passengers = sum(info.values())
     if total_passengers > 0:
-        percentages = (
-            {key: round(value / total_passengers  *  100, 2)
-             for key, value in info.items()}
-        )
+        percentages = {key: round(value / total_passengers * 100, 2) for key, value in info.items()}
         return percentages
     else:
         return None
 
 
-def main():
+def var3_main():
     with open('data.csv') as file:
         lines = file.readlines()
         lines = [line.strip() for line in lines if line.strip()]
@@ -52,7 +49,7 @@ def main():
 
     fig = plt.figure(figsize=(10, 3))
     if selected_percent and converted_info is not None:
-        plt.bar(['мужчин', 'женщин'],[converted_info['мужчин'], converted_info['женщин']])
+        plt.bar(['мужчин', 'женщин'], [converted_info['мужчин'], converted_info['женщин']])
         plt.ylabel('процент')
         st.dataframe(converted_info)
     elif not selected_percent:
