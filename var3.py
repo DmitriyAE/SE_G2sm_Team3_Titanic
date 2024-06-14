@@ -20,11 +20,24 @@ def passenger(lines, selected_value):
     return info
 
 
-def var3_main():
+def convert_to_percentages(info):
+    total_passengers = sum(info.values())
+    if total_passengers > 0:
+        percentages = (
+            {key: round(value / total_passengers  *  100, 2)
+             for key, value in info.items()}
+        )
+        return percentages
+    else:
+        return None
+
+
+def main():
     with open('data.csv') as file:
         lines = file.readlines()
+        lines = [line.strip() for line in lines if line.strip()]
 
-    st.subheader(
+    st.write(
         'Подсчитать количество мужчин и количество женщин, '
         'указав спасен/погиб и число или %.'
     )
@@ -35,20 +48,15 @@ def var3_main():
     selected_percent = st.checkbox('Процент от общего количества пассажиров')
 
     info = passenger(lines, selected_value)
+    converted_info = convert_to_percentages(info)
 
-    fig = plt.figure(figsize=(7, 4))
-    if selected_percent:
-        total_passengers = info["мужчин"] + info["женщин"]
-        if total_passengers > 0:
-            info = {"мужчин":
-                    round(info["мужчин"] / total_passengers * 100, 2),
-                    "женщин":
-                    round(info["женщин"] / total_passengers * 100, 2)}
-        plt.bar(['мужчин', 'женщин'], [info["мужчин"], info["женщин"]])
+    fig = plt.figure(figsize=(10, 3))
+    if selected_percent and converted_info is not None:
+        plt.bar(['мужчин', 'женщин'],[converted_info['мужчин'], converted_info['женщин']])
         plt.ylabel('процент')
-        st.dataframe(info)
-    else:
-        plt.bar(['мужчин', 'женщин'], [info["мужчин"], info["женщин"]])
+        st.dataframe(converted_info)
+    elif not selected_percent:
+        plt.bar(['мужчин', 'женщин'], [info['мужчин'], info['женщин']])
         plt.ylabel('количество')
         st.dataframe(info)
     plt.xlabel('Пассажиры')
